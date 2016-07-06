@@ -38,4 +38,6 @@ public abstract class Node {
     abstract void nextPosition();
     
     abstract Color getColor();
+    
+    abstract Node getTargetNode(Node n, ArrayList<Node> l);
 }

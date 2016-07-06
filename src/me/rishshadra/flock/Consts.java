@@ -10,5 +10,6 @@ package me.rishshadra.flock;
  * @author Rish Shadra <rshadra@gmail.com>
  */
 public class Consts {
-    public double MAX_INFLUENCE_DISTANCE = 5;
+    public static final double MAX_INFLUENCE_DISTANCE = 5;
+    public static final int SIZE_X = 1000, SIZE_Y = 1000;
 }

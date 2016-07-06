@@ -32,7 +32,16 @@ public class DiscoNode extends Node {
 
     @Override
     Color getColor() {
-        return Color.RED;
+        Random ra = new Random();
+        float r = ra.nextFloat();
+        float g = ra.nextFloat();
+        float b = ra.nextFloat();
+        return new Color(r, g, b);
+    }
+
+    @Override
+    Node getTargetNode(Node n, ArrayList<Node> l) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

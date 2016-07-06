@@ -13,9 +13,9 @@ import java.util.Random;
  *
  * @author Rish Shadra <rshadra@gmail.com>
  */
-public class BasicNode extends Node {
+public class EdgeDetectNode extends Node {
 
-    BasicNode(double x, double y, double speed, double dir) {
+    EdgeDetectNode(double x, double y, double speed, double dir) {
         super(x, y, speed, dir);
     }
 

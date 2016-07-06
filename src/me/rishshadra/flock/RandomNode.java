@@ -22,6 +22,11 @@ public class RandomNode extends Node {
     }
 
     @Override
+    Node getTargetNode(Node n, ArrayList<Node> l) {
+        return null;
+    }
+
+    @Override
     void update(Node n) {
 
     }
@@ -40,7 +45,7 @@ public class RandomNode extends Node {
 
     @Override
     Color getColor() {
-        return Color.black;
+        return Color.WHITE;
     }
 
 }

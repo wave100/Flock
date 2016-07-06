@@ -19,6 +19,11 @@ public class RabbitNode extends Node {
     }
 
     @Override
+    Node getTargetNode(Node n, ArrayList<Node> l) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     void update(Node n) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

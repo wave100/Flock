@@ -6,12 +6,13 @@
 package me.rishshadra.flock.gui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-
+import static me.rishshadra.flock.Consts.*;
 /**
  *
  * @author Rish Shadra <rshadra@gmail.com>
@@ -21,8 +22,8 @@ public class Display extends javax.swing.JFrame {
     /**
      * Creates new form Display
      */
-    BufferedImage img = new BufferedImage(1024, 768, BufferedImage.TYPE_INT_RGB);
-    BufferedImage nextimg = new BufferedImage(1024, 768, BufferedImage.TYPE_INT_RGB);
+    BufferedImage img = new BufferedImage(SIZE_X, SIZE_Y, BufferedImage.TYPE_INT_RGB);
+    BufferedImage nextimg = new BufferedImage(SIZE_X, SIZE_Y, BufferedImage.TYPE_INT_RGB);
 
     public Display() {
         initComponents();
@@ -30,8 +31,8 @@ public class Display extends javax.swing.JFrame {
 
     public BufferedImage generateBlankFrame(int x, int y) {
         Graphics2D gfx = img.createGraphics();
-        gfx.setPaint(Color.WHITE);
-        gfx.fillRect(0, 0, 1024, 768);
+        gfx.setPaint(Color.BLACK);
+        gfx.fillRect(0, 0, SIZE_X, SIZE_Y);
         return img;
     }
 
@@ -71,10 +72,12 @@ public class Display extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1024, 768));
+        setPreferredSize(new Dimension(SIZE_X, SIZE_Y));
         setResizable(false);
 
         jLabel1.setIcon(new ImageIcon(generateBlankFrame(1024,768)));
+        jLabel1.setAlignmentY(0.0F);
+        jLabel1.setAutoscrolls(true);
         jLabel1.setPreferredSize(new java.awt.Dimension(1024, 768));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

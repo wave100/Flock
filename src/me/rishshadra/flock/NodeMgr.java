@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 import me.rishshadra.flock.gui.Display;
+import static me.rishshadra.flock.Consts.*;
 
 /**
  *
  * @author Rish Shadra <rshadra@gmail.com>
  */
 public class NodeMgr implements Runnable {
-
-    public static ArrayList<Node> nodes = new ArrayList<>();
+    
     public static Display d = new Display();
 
     public static void main(String[] args) throws InterruptedException {
@@ -32,9 +32,9 @@ public class NodeMgr implements Runnable {
 
         Random r = new Random();
 
-        for (int i = 0; i < 500; i++) {
-            //nodes.add(new BasicNode(r.nextInt(1025), r.nextInt(769), 0.0001 * r.nextInt(10000), r.nextInt(360)));
-            nodes.add(new RandomNode(r.nextInt(1025), r.nextInt(769)));
+        for (int i = 0; i < 10; i++) {
+            NodeContainer.add(new BasicNode(r.nextInt(SIZE_X + 1), r.nextInt(SIZE_Y + 1), 0.0001 * r.nextInt(10000), r.nextInt(360)));
+            //NodeContainer.add(new RandomNode(r.nextInt(SIZE_X + 1), r.nextInt(SIZE_Y + 1)));
         }
         
         //for (int i = 0; i < 1; i++) {
@@ -64,11 +64,11 @@ public class NodeMgr implements Runnable {
     @Override
     public void run() {
         while (true) {
-            Collections.shuffle(nodes);
-            for (Node n : nodes) {
+            NodeContainer.shuffle();
+            for (Node n : NodeContainer.getList()) {
                 n.nextPosition();
                 d.addDisplayedNode((int) n.x, (int) n.y, n.getColor());
-                n.update(NodeUtils.getTargetNode(n, nodes));
+                n.update(n.getTargetNode(n, NodeContainer.getList()));
             }
 
             //for (Node n : nodes) {
