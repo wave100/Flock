@@ -5,18 +5,20 @@
  */
 package me.rishshadra.flock;
 
-import java.util.Random;
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  *
  * @author Rish Shadra <rshadra@gmail.com>
  */
-public class Node {
+public abstract class Node {
 
-    public double x, y;
-    public double speed, dir;
-    private Random r = new Random();
-
+    protected double x = 0, y = 0;
+    protected double speed = 0, dir = 0;
+    protected String id = UUID.randomUUID().toString();
+    
     Node(double x, double y) {
         this.x = x;
         this.y = y;
@@ -29,32 +31,11 @@ public class Node {
         this.dir = dir;
     }
 
-    public void update(Node n) {
-        //if (r.nextInt(1001) <= 1) {
-         //   speed = speed + ((r.nextDouble() - 0.5) / 100);
-          //  dir = dir + 1 * (r.nextDouble() - 0.5);
-        //} else {
-            speed = (0.9 * speed) + (0.1 * n.speed);
-            dir = (0.75 * dir) + (0.25 * n.dir);
-        //}
-    }
+    abstract void update(Node n);
 
-    public void replace(Node n) {
-        this.x = n.x;
-        if (n.x >= 1024) {
-            this.x = 0;
-        }
-        if (n.x < 0) {
-            this.x = 1024;
-        }
-        this.y = n.y;
-        if (n.y >= 768) {
-            this.y = 0;
-        }
-        if (n.y < 0) {
-            this.y = 768;
-        }
-        this.speed = n.speed;
-        this.dir = n.dir;
-    }
+    abstract void multiUpdate(ArrayList<Node> l);
+    
+    abstract void nextPosition();
+    
+    abstract Color getColor();
 }

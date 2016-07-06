@@ -8,8 +8,6 @@ package me.rishshadra.flock;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import me.rishshadra.flock.gui.Display;
 
 /**
@@ -22,10 +20,8 @@ public class NodeMgr implements Runnable {
     public static Display d = new Display();
 
     public static void main(String[] args) throws InterruptedException {
+        
 //        d.setVisible(true);
-//        Node n = new Node(0, 0, 0.0008, 190);
-//        System.out.println("Dir: " + n.dir);
-//        System.out.println("Spd: " + n.speed);
 //        while (true) {
 //            d.clearFrame();
 //            n.replace(NodeUtils.getNewPosition(n));
@@ -34,17 +30,20 @@ public class NodeMgr implements Runnable {
 //            d.updateFrame();
 //        }
 
-//        nodes.add(new Node(512, 384, 0.008, 190));
-//        nodes.add(new Node(203, 230, 0.018, 348));
-//        nodes.add(new Node(385, 223, 0.005, 201));
-//        nodes.add(new Node(450, 67, 0.014, 109));
-//        nodes.add(new Node(223, 78, 0.0023, 60));
-        //nodes.add(new Node(100, 100, 1, 180));
         Random r = new Random();
 
         for (int i = 0; i < 500; i++) {
-            nodes.add(new Node(r.nextInt(1025), r.nextInt(769), 0.01 * r.nextInt(100), r.nextInt(360)));
+            //nodes.add(new BasicNode(r.nextInt(1025), r.nextInt(769), 0.0001 * r.nextInt(10000), r.nextInt(360)));
+            nodes.add(new RandomNode(r.nextInt(1025), r.nextInt(769)));
         }
+        
+        //for (int i = 0; i < 1; i++) {
+        //    nodes.add(new RandomNode(r.nextInt(1025), r.nextInt(769)));
+        //}
+        
+        //nodes.add(new TestNode(512, 384, 0.1, Math.PI));
+        //nodes.add(new BasicNode(-10, -10, 0.1, 180));
+
         d.setVisible(true);
         Thread t = new Thread(new NodeMgr());
         t.start();
@@ -67,17 +66,14 @@ public class NodeMgr implements Runnable {
         while (true) {
             Collections.shuffle(nodes);
             for (Node n : nodes) {
-                n.replace(NodeUtils.getNewPosition(n));
-                d.addDisplayedNode((int) n.x, (int) n.y);
+                n.nextPosition();
+                d.addDisplayedNode((int) n.x, (int) n.y, n.getColor());
+                n.update(NodeUtils.getTargetNode(n, nodes));
             }
-//            try {
-//                //Thread.sleep(100);
-//            } catch (InterruptedException ex) {
-//                Logger.getLogger(NodeMgr.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-            for (Node n : nodes) {
-                n.update(NodeUtils.getNearestNode(n, nodes));
-            }
+
+            //for (Node n : nodes) {
+            //    n.update(NodeUtils.getTargetNode(n, nodes));
+            //}
             d.commitNextFrame();
         }
     }
