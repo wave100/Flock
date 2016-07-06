@@ -41,9 +41,9 @@ public class Display extends javax.swing.JFrame {
         jLabel1.setIcon(new ImageIcon(img));
     }
 
-    public void addDisplayedNode(int x, int y) {
+    public void addDisplayedNode(int x, int y, Color c) {
         Graphics2D gfx = nextimg.createGraphics();
-        gfx.setPaint(Color.RED);
+        gfx.setPaint(c);
         gfx.drawRect(x, y, 1, 1);
     }
 
