@@ -21,7 +21,12 @@ public class BasicNode extends Node {
 
     @Override
     public void update(Node n) {
-        speed = (0.999 * speed) + (0.001 * n.speed);
+        if (!n.id.equals(targetID)) {
+            NodeContainer.decrementPopularity(targetID);
+            NodeContainer.incrementPopularity(id);
+            targetID = id;
+        }
+        speed = (0.75 * speed) + (0.25 * n.speed);
         dir = (0.25 * dir) + (0.75 * n.dir);
     }
 

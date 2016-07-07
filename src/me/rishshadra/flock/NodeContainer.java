@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class NodeContainer {
 
     private static ArrayList<Node> nodes = new ArrayList<>();
-    private static HashMap<String, Integer> popularityMap = new HashMap<>();
+    public static HashMap<String, Integer> popularityMap = new HashMap<>();
 
     public static void add(Node n) {
         nodes.add(n);
@@ -31,11 +31,11 @@ public class NodeContainer {
     }
     
     public static void incrementPopularity(String nodeID) {
-        
+        popularityMap.put(nodeID, popularityMap.getOrDefault(nodeID, 0) + 1);
     }
     
     public static void decrementPopularity(String nodeID) {
-        
+        popularityMap.put(nodeID, popularityMap.getOrDefault(nodeID, 0) - 1);
     }
     
 }

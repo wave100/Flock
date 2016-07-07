@@ -17,7 +17,7 @@ public abstract class Node {
 
     protected double x = 0, y = 0;
     protected double speed = 0, dir = 0;
-    protected String id = UUID.randomUUID().toString();
+    protected String id = UUID.randomUUID().toString(), targetID = "";
     
     Node(double x, double y) {
         this.x = x;

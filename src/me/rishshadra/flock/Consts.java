@@ -12,4 +12,8 @@ package me.rishshadra.flock;
 public class Consts {
     public static final double MAX_INFLUENCE_DISTANCE = 5;
     public static final int SIZE_X = 1000, SIZE_Y = 1000;
+    
+    //EdgeDetectNode
+    public static final int EDGE_DETECT_X_THRESHOLD = 150;
+    public static final int EDGE_DETECT_Y_THRESHOLD = 150;
 }

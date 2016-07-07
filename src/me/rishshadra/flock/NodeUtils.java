@@ -18,7 +18,7 @@ public class NodeUtils {
         double mindist = -1;
         Node nearest = null;
         for (Node q : l) {
-            if (((getDistance(n, q) < mindist) || (mindist == -1)) && (getDistance(n, q) != 0)) {
+            if (((getDistance(n, q) < mindist) || (mindist == -1)) && (getDistance(n, q) != 0) && NodeContainer.popularityMap.getOrDefault(n.id, 1) >= NodeMgr.s.max - 1) {
                 mindist = getDistance(n, q);
                 nearest = q;
             }
